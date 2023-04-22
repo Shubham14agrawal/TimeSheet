@@ -1,0 +1,18 @@
+<br><br><div class="card-list">
+  <div class="card" *ngFor="let submission of submissions">
+    <div class="card-header">
+      <h2>{{ submission.name }}</h2>
+      <p>{{ submission.date | date: 'mediumDate' }}</p>
+    </div>
+    <div class="card-body">
+      <p><strong>Work hours or leave day:</strong> {{ submission.workHoursOrLeaveDay }}</p>
+      <p><strong>Start time:</strong> {{ submission.startTime }}</p>
+      <p><strong>End time:</strong> {{ submission.endTime }}</p>
+      <p><strong>Description:</strong> {{ submission.description }}</p>
+    </div>
+    <div class="card-footer">
+      <button (click)="approve(submission)" class="btn btn-primary">Approve</button>
+      <button (click)="reject(submission)" class="btn btn-danger">Reject</button>
+    </div>
+  </div>
+</div>

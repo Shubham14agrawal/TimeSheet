@@ -1,0 +1,55 @@
+<div class="sixty-percent-width"><form [formGroup]="submissionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="submissionForm.get('name')?.invalid && submissionForm.get('name')?.touched">
+      <span class="error" *ngIf="submissionForm.get('name')?.hasError('required')">Name is required</span>
+    </div>
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" formControlName="date">
+    <div *ngIf="submissionForm.get('date')?.invalid && submissionForm.get('date')?.touched">
+      <span class="error" *ngIf="submissionForm.get('date')?.hasError('required')">Date is required</span>
+    </div>
+  </div>
+  <div>
+    <label for="workHoursOrLeaveDay">Work Hours or Leave Day:</label>
+    <div>
+      <label for="workHours">
+        <input type="radio" id="workHours" value="Work Hours" formControlName="workHoursOrLeaveDay">
+        Work Hours
+      </label>
+      <label for="leaveDay">
+        <input type="radio" id="leaveDay" value="Leave Day" formControlName="workHoursOrLeaveDay">
+        Leave Day
+      </label>
+    </div>
+    <div *ngIf="submissionForm.get('workHoursOrLeaveDay')?.invalid && submissionForm.get('workHoursOrLeaveDay')?.touched">
+      <span class="error" *ngIf="submissionForm.get('workHoursOrLeaveDay')?.hasError('required')">This field is required</span>
+    </div>
+  </div>
+  <div>
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" formControlName="startTime">
+    <div *ngIf="submissionForm.get('startTime')?.invalid && submissionForm.get('startTime')?.touched">
+      <span class="error" *ngIf="submissionForm.get('startTime')?.hasError('required')">Start time is required</span>
+    </div>
+  </div>
+  <div>
+    <label for="endTime">End Time:</label>
+    <input type="time" id="endTime" formControlName="endTime">
+    <div *ngIf="submissionForm.get('endTime')?.invalid && submissionForm.get('endTime')?.touched">
+      <span class="error" *ngIf="submissionForm.get('endTime')?.hasError('required')">End time is required</span>
+    </div>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="submissionForm.get('description')?.invalid && submissionForm.get('description')?.touched">
+      <span class="error" *ngIf="submissionForm.get('description')?.hasError('required')">Description is required</span>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!submissionForm.valid">Submit</button>
+</form>
+</div>

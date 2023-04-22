@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="mat-toolbar-row">
+  NAGP TS 
+
+  <ng-container *ngIf="authService.currentUser | async as user; else loginBtn">
+    <button mat-button mat-button-raised mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      {{ user.displayName }}
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </ng-container>
+
+  <mat-menu #userMenu class="mat-menu-panel">
+    <button mat-menu-item class="mat-list-item" (click)="logOut()">Log out</button>
+  </mat-menu>
+
+  <ng-template #loginBtn>
+    <button mat-button mat-button-raised mat-button-toggle routerLink="/login">
+      <mat-icon>login</mat-icon>
+      Log in
+    </button>
+  </ng-template>
+</mat-toolbar>
+
+<div class="router-container">
+  <router-outlet></router-outlet>
+</div>
